@@ -81,7 +81,7 @@ function toUpper(str) {
    long = parseFloat(long);
    let objlat = parseFloat(object.lat);
    let objlong = parseFloat(object.long);
-   if(lat > objlat - .3 && lat < objlat + .3 && long > objlong - .3 && long < objlong + .3) {
+   if(lat > objlat - .4 && lat < objlat + .4 && long > objlong - .4 && long < objlong + .4) {
      return true;
    }
    return false;
@@ -92,6 +92,10 @@ router.get('/suggestions', function(req, res) {
     if(req.query.q) {
       query = toUpper(req.query.q)
       query = query.trim()
+    }
+    if(req.query.lat && req.query.long) {
+      req.query.lat = req.query.lat.trim();
+      req.query.long = req.query.long.trim();
     }
     let suggestions = []
     let score = 1;
@@ -106,7 +110,7 @@ router.get('/suggestions', function(req, res) {
         suggestions.push(suggest[i])
       }
     }
-    let suggests = format(suggestions, query, req.query.lat.trim(), req.query.long.trim())
+    let suggests = format(suggestions, query, req.query.lat, req.query.long)
     suggests = suggests.sort((a,b) => b.score - a.score);
     let form = {
       suggestions: suggests
@@ -114,6 +118,10 @@ router.get('/suggestions', function(req, res) {
     res.render('index',{
       suggestions: JSON.stringify(form, 0, 2)
     })
+})
+
+router.get('/', function(req,res) {
+  res.redirect('/suggestions')
 })
 
 module.exports = router;

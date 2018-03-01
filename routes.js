@@ -106,7 +106,7 @@ router.get('/suggestions', function(req, res) {
         suggestions.push(suggest[i])
       }
     }
-    let suggests = format(suggestions, query, req.query.lat, req.query.long)
+    let suggests = format(suggestions, query, req.query.lat.trim(), req.query.long.trim())
     suggests = suggests.sort((a,b) => b.score - a.score);
     let form = {
       suggestions: suggests

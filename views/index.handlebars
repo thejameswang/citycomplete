@@ -1,8 +1,12 @@
+<!--Creates the form at the start for searching for the city -->
+
 <form class="" action="/suggestions" method="get">
   <input type="text" name="q" value="" placeholder="Enter City name">
   <input type="text" name="lat" value="" placeholder="Enter Latitude of City">
   <input type="text" name="long" value="" placeholder="Enter Longitude of City">
   <input type="submit" value="Submit">
 </form>
-
+<!--_____________hows the suggestions from the inputs given _____________________________
+  The pre tag keeps the original spacing given by JSON.stringify in the get request in the routes.js file
+ -->
 <pre>{{suggestions}}</pre>

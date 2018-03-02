@@ -1,17 +1,24 @@
+//Required imports for the application
 var express = require('express')
 var validator = require('express-validator')
 var fs = require('fs')
 var d3 = require('d3')
 var path = require('path')
 
+//Initializes router to be another method of routing
 var router = express.Router();
+//Using the D3 package, we read the entire file to be read in a very pure format
+//d3.tsvParse reads the raw file from the fs.readFileSync
 const file = fs.readFileSync(path.join(__dirname, 'data','cities_canada-usa.tsv'), 'utf-8');
 let suggest = d3.tsvParse(file)
 
+//Takes query string, and formats it to upper case -- helps searching in the files
 function toUpper(str) {
+  //Strings less than a length of 4 will be interpreted as an atl_name like ATL, or SFO
   if(str.length < 4) {
     return str.toUpperCase();
   }
+  //lowers the entire string the upper cases the first of each string
   return str
       .toLowerCase()
       .split(' ')

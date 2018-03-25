@@ -63,12 +63,6 @@ An API endpoint that provides auto-complete suggestions for large cities hosted 
 ```
 
 
-## References
-
-- Geonames provides city lists Canada and the USA http://download.geonames.org/export/dump/readme.txt
-- http://www.nodejs.org/
-- http://ejohn.org/blog/node-js-stream-playground/
-
 ## Getting Started
 
 Begin by cloning this repo.
@@ -105,3 +99,11 @@ Server running at http://localhost:2345
 ```
 
 Otherwise the application is hosted at citycomplete.herokuapp.com
+
+## References
+
+- Geonames provides city lists Canada and the USA http://download.geonames.org/export/dump/readme.txt
+- http://www.nodejs.org/
+- http://ejohn.org/blog/node-js-stream-playground/
+- http://heroku.com/
+-
